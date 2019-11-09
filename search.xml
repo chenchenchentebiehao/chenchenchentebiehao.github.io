@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>删除排序数组中的重复项</title>
+    <url>/2019/11/08/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<p>Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length.</p><a id="more"></a>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<h1 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a>删除排序数组中的重复项</h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>实例1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>说明:</strong> </p>
+<p>随便给一个数组 （1）要求删除里面的相同数值多于项目</p>
+<p>​                           （2）返回这个新的数组的长度</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>    </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span>        </span><br><span class="line">    nums.sort()        </span><br><span class="line">    i = <span class="number">0</span>;        </span><br><span class="line">    <span class="keyword">while</span> i &lt; len(nums) - <span class="number">1</span>:            </span><br><span class="line">      <span class="keyword">if</span> nums[i] == nums[i + <span class="number">1</span>]:                </span><br><span class="line">        nums.remove(nums[i])</span><br><span class="line">       	<span class="keyword">continue</span></span><br><span class="line">      <span class="keyword">else</span>:                </span><br><span class="line">          i = i + <span class="number">1</span>        </span><br><span class="line">     a = len(nums)        </span><br><span class="line">     print(str(a))        </span><br><span class="line">     print(nums)</span><br><span class="line">  </span><br><span class="line">a = Solution()<span class="string">'''调用类'''</span></span><br><span class="line">a.removeDuplicates([<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">4</span>])<span class="string">'''调用类里面的方法'''</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''运行结果'''</span></span><br><span class="line"> <span class="number">6</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+<p>算法一过程：</p>
+<p>​    给定无规律的数组，第一步就是对数组里面的数值进行排序，排序的过程用到python里面自带的方法sort，数组的方法还有一个 reverse 第一个可以按开头字母来排序，也可以用数组里面的数值大小排序，其次设置一个指针 用于遍历数组中的值，这里对第i个数和第i+1个数进行比较，比较出来的结果要么相同要么不同，用到if条件语句相同的话执行remove（）方法将第i个值移除数列，并且continue执行下一次循环。不同指针指向下一个数组，打印新数组和长度值，当然这个可以使用双指针的方法做，后面我会补充说明。</p>
+<p>运行结果是 7.5.3.1</p>
+<h2 id="reversed（）和reverse（）"><a href="#reversed（）和reverse（）" class="headerlink" title="reversed（）和reverse（）"></a>reversed（）和reverse（）</h2><p>python中还有reversed方法 准确来说是一个类 用法比reverse 更多，主要是掌握他的用法</p>
+<ul>
+<li>列表的反转</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bb = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line">print(list(reversed(bb)))</span><br></pre></td></tr></table></figure>
+
+<p>​        打印结果： [7, 5, 3, 1] </p>
+<ul>
+<li><p>元组的反转</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">aa = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">print(tuple(reversed(aa)))</span><br></pre></td></tr></table></figure>
+
+<p>打印结果：（3，2，1）</p>
+</li>
+<li><p>字符串的反转</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ss = <span class="string">"qwer1234"</span> </span><br><span class="line">print(<span class="string">''</span>.join(reversed(ss)))</span><br></pre></td></tr></table></figure>
+
+<p>打印结果：4321rewq</p>
+</li>
+</ul>
+<h2 id="sort（）和sorted（）"><a href="#sort（）和sorted（）" class="headerlink" title="sort（）和sorted（）"></a>sort（）和sorted（）</h2><p>话说回来sort也有sorted 也有类似的对比方法，和reversed 一样 sorted 更像是一个类，与sort不同的是sort()不能对dict字典进行排序 而且 使用sort()方法对list排序会修改list本身,不会返回新list，通常此方法不如sorted()方便，但是如果你不需要保留原来的list，此方法将更有效sort()。 </p>
+<p>sorted几个常见用法</p>
+<ul>
+<li><p>使用sorted()排序 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">my_list = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line">result = sorted(my_list)</span><br><span class="line"><span class="keyword">print</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出： [1, 2, 3, 4,5]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_dict = &#123;<span class="string">"a"</span>:<span class="string">"1"</span>, <span class="string">"c"</span>:<span class="string">"3"</span>, <span class="string">"b"</span>:<span class="string">"2"</span>&#125;</span><br><span class="line">result = sorted(my_dict)</span><br><span class="line"><span class="keyword">print</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出: ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用sort排序 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_list = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line">my_list.sort()</span><br><span class="line"><span class="keyword">print</span> my_list</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出： [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="数组常用的操作"><a href="#数组常用的操作" class="headerlink" title="数组常用的操作"></a>数组常用的操作</h2><h3 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h3><p>这个没什么好说的直接修改，和java一样</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">arr[<span class="number">0</span>]=<span class="string">'ff'</span>;</span><br><span class="line">print(arr)</span><br></pre></td></tr></table></figure>
+
+<p>确定好你要修改的位置直接等于</p>
+<h3 id="在列表末尾追加元素append"><a href="#在列表末尾追加元素append" class="headerlink" title="在列表末尾追加元素append"></a>在列表末尾追加元素append</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">arr.append(<span class="string">'d'</span>);</span><br><span class="line">print(arr)</span><br></pre></td></tr></table></figure>
+
+<p>在实际中经常使用一个空列表，然后用append方法</p>
+<h3 id="插入元素insert（index）"><a href="#插入元素insert（index）" class="headerlink" title="插入元素insert（index）"></a>插入元素insert（index）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">arr.insert(<span class="number">1</span>,<span class="string">'aa'</span>);</span><br><span class="line">print(arr)</span><br></pre></td></tr></table></figure>
+
+<p>insert指定位置，在指定数值</p>
+<h3 id="使用del删除元素"><a href="#使用del删除元素" class="headerlink" title="使用del删除元素"></a>使用del删除元素</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line"><span class="keyword">del</span> arr[<span class="number">0</span>]</span><br><span class="line">print(arr)</span><br></pre></td></tr></table></figure>
+
+<p>直接删除指定位置的数值</p>
+<h3 id="使用pop删除元素"><a href="#使用pop删除元素" class="headerlink" title="使用pop删除元素"></a>使用pop删除元素</h3><p> pop与del的区别在于，pop方法会返回你删除掉的元素，让你可以继续使用被删除的元素，比如： </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">bedel = arr.pop();</span><br><span class="line">print(arr)</span><br><span class="line">print(bedel);</span><br></pre></td></tr></table></figure>
+
+<h3 id="根据元素值删除元素remove"><a href="#根据元素值删除元素remove" class="headerlink" title="根据元素值删除元素remove"></a>根据元素值删除元素remove</h3><p> 如果我们不知道我们想要删除的元素的位置，只知道元素的值，那么就使用remove </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">arr.remove(<span class="string">'b'</span>);</span><br><span class="line">print(arr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于访问元素末尾的值"><a href="#关于访问元素末尾的值" class="headerlink" title="关于访问元素末尾的值"></a>关于访问元素末尾的值</h3><p>我们在不知道列表长度的时候如何访问列表末尾的值呢？或者倒数第二个值。。。。。</p>
+<p>我们知道在java中只能获取列表长度来进行操作，那么python是如何做的呢？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">print(arr[<span class="number">-1</span>]);</span><br><span class="line">print(arr[<span class="number">-2</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p> Python方法sort()让你能够较为轻松地对列表进行排序。假设你有一个汽车列表，并要让其中的汽车按字母顺序排列。为简化这项任务，我们假设该列表中的所有值都是小写的。 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cars = [<span class="string">'bmw'</span>, <span class="string">'audi'</span>, <span class="string">'toyota'</span>, <span class="string">'subaru'</span>]</span><br><span class="line">cars.sort();</span><br><span class="line">print(cars);</span><br></pre></td></tr></table></figure>
+
+<p>方法sort(）永久性地修改了列表元素的排列顺序。现在，汽车是按字母顺序排列的，再也无法恢复到原来的排列顺序。</p>
+<p>你也可以使用参数reverse=True来试用按字符相反的顺序进行排序：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cars = [<span class="string">'bmw'</span>, <span class="string">'audi'</span>, <span class="string">'toyota'</span>, <span class="string">'subaru'</span>]</span><br><span class="line">cars.sort(reverse=<span class="literal">True</span>);</span><br><span class="line">print(cars);</span><br></pre></td></tr></table></figure>
+
+<h3 id="倒着打印列表"><a href="#倒着打印列表" class="headerlink" title="倒着打印列表"></a>倒着打印列表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cars = [<span class="string">'bmw'</span>, <span class="string">'audi'</span>, <span class="string">'toyota'</span>, <span class="string">'subaru'</span>]</span><br><span class="line">cars.reverse()</span><br><span class="line">print(cars);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取列表长度"><a href="#获取列表长度" class="headerlink" title="获取列表长度"></a>获取列表长度</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cars = [<span class="string">'bmw'</span>, <span class="string">'audi'</span>, <span class="string">'toyota'</span>, <span class="string">'subaru'</span>]</span><br><span class="line">print(len(cars));</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>旋转数组</title>
+    <url>/2019/11/08/%E5%88%87%E7%89%87%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="旋转数组"><a href="#旋转数组" class="headerlink" title="旋转数组"></a>旋转数组</h1><h2 id="切片的学习"><a href="#切片的学习" class="headerlink" title="切片的学习"></a>切片的学习</h2><p> 如果对数组进行分段提取，我们可能会用下标的方式，如果提取的量太大，那么可能会比较麻烦，所以Python提供了切片操作符。 </p><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = [<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>, <span class="string">'Bart'</span>, <span class="string">'Paul'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>我只要前面2个元素，L[0;3]</p>
+<p>结果</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>, <span class="string">'Bart'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意的是这里面的0是指的第一个元素 到第三个元素截至不包含第三个元素（也就是下标为4的元素）切片内的参数不写表示从第一个参数开始，最后一个参数结束</p>
+<p>切片方法还可以包含三个参数 开始，结束，每隔多少取一个</p>
+<p>第三个参数表示每隔n个元素，取一个。</p>
+<p>由于List也可以有第倒数多少元素这种操作，那么，使用倒数下标也可以这样操作。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = [<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>, <span class="string">'Bart'</span>, <span class="string">'Paul'</span>]</span><br><span class="line">L[::<span class="number">2</span>]</span><br><span class="line">运行结果</span><br><span class="line">[<span class="string">'Adam'</span>, <span class="string">'Bart'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<p> 补充一下 数组是可以相加的  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">L = [<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>] + [ <span class="string">'Bart'</span>, <span class="string">'Paul'</span>]</span><br><span class="line">[<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>, <span class="string">'Bart'</span>, <span class="string">'Paul'</span>]</span><br><span class="line">L[] = L[:<span class="number">1</span>]+L[<span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="来解一下这一道题"><a href="#来解一下这一道题" class="headerlink" title="来解一下这一道题"></a>来解一下这一道题</h2><p> 给定一个数组，将数组中的元素向右移动 <em>k</em> 个位置，其中 <em>k</em> 是非负数。 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">输入: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>] 和 k = <span class="number">3</span></span><br><span class="line">输出: [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">过程是</span><br><span class="line">向右旋转 <span class="number">1</span> 步: [<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">向右旋转 <span class="number">2</span> 步: [<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">向右旋转 <span class="number">3</span> 步: [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<p>解题思路 </p>
+<p>​    从len（nums）- k 开始 为第一个数组，第二的数组从len（nums）- k 结束</p>
+<p>这样就达到交换的目的了</p>
+<p>实现代码部分为</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotate</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums[:] = nums[len(nums)-k:]+nums[:len(nums)-k]</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+]]></content>
+  </entry>
+  <entry>
+    <title>判断是否存在重复元素</title>
+    <url>/2019/11/08/%E6%A0%B9%E6%8D%AE%E6%98%A8%E5%A4%A9%E7%9A%84%E8%BF%9B%E8%A1%8C%E6%94%B9%E7%BC%96%E8%80%8C%E6%9D%A5%EF%BC%9A/</url>
+    <content><![CDATA[<h1 id="存在重复元素"><a href="#存在重复元素" class="headerlink" title="存在重复元素"></a>存在重复元素</h1><p>题目：给定一个整数数组，判断是否存在重复元素。</p><a id="more"></a>
+<p>如果任何值在数组中出现至少两次，函数返回 true。如果数组中每个元素都不相同，则返回 false。</p>
+<p>实列一：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,1]</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p>实列二：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,4]</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>实现：</p>
+<h2 id="根据昨天的进行改编而来："><a href="#根据昨天的进行改编而来：" class="headerlink" title="根据昨天的进行改编而来："></a>根据昨天的进行改编而来：</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">      先进性排序，排序后对上一个值和下一个值进行比较 </span></span><br><span class="line"><span class="string">      相同就立刻返回Ture 且break 跳出循环</span></span><br><span class="line"><span class="string">      不同i++ 进行下一次循环。思路很简单 但是过于繁琐，不建议使用</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> i&lt;len(nums) - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(nums) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[i] == nums[i + <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="暴力-求解法"><a href="#暴力-求解法" class="headerlink" title="暴力 求解法"></a>暴力 求解法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len(nums)):</span><br><span class="line">                <span class="keyword">if</span> nums[i] == nums[j]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>双循环，从里到外进行比较</p>
+<p>时间复杂度n*n</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>对数组先进行排序</p>
+<p>排序后 在比较前后的数值是否相等</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i - <span class="number">1</span>] == nums[i]: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>用字典记录的方法查询数组里面是否有相同的。字典开始为空！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">in</span> visited:</span><br><span class="line">            		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">else</span>：</span><br><span class="line">            		visited.add(num)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="比较数组长度的方法"><a href="#比较数组长度的方法" class="headerlink" title="比较数组长度的方法"></a>比较数组长度的方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> len((set(nums))) != len(nums)</span><br></pre></td></tr></table></figure>
+
+<p>这里比较的是nums 和 set（nums）的长度，set函数可以将数组里面的重复项删去。</p>
+<h2 id="集合set（）在python中的方法"><a href="#集合set（）在python中的方法" class="headerlink" title="集合set（）在python中的方法"></a>集合set（）在python中的方法</h2><ol>
+<li>set是一个无序不重复的序列</li>
+<li>可以用 { } 或者 set( ) 函数创建集合</li>
+<li>集合存放不可变类型（字符串、数字、元组）</li>
+</ol>
+<p>　　<code>**注意：创建一个空集合必须用 set( ) 而不是 { } ，因为 { } 是用来创建一个空字典**</code> </p>
+<h3 id="set-add-x"><a href="#set-add-x" class="headerlink" title="set.add(x)"></a><strong>set.add(x)</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># add(x)将元素x添加到集合里</span></span><br><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,&#125;</span><br><span class="line">s.add(<span class="string">'5'</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="string">'5'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-update-x-可更新多个值"><a href="#set-update-x-可更新多个值" class="headerlink" title="set.update(x)  可更新多个值"></a>set.update(x)  可更新多个值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># update(x),将x添加到集合中，且参数可以是列表、元组、字典等</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line"><span class="comment"># 添加字典只能添加不可变的--键</span></span><br><span class="line">dict_1 = &#123;<span class="string">'name'</span>: <span class="string">'bb'</span>, <span class="string">'age'</span>: <span class="string">'cc'</span>, <span class="string">'f'</span>: <span class="number">11</span>&#125;</span><br><span class="line">s.update(dict_1)</span><br><span class="line">print(<span class="string">"添加字典"</span>+str(s))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">添加字典&#123;<span class="string">'name'</span>, <span class="string">'a'</span>, <span class="string">'age'</span>, <span class="string">'f'</span>, <span class="string">'cc'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># update(x),将x添加到集合中，且参数可以是列表、元组、字典等</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">tup_1 = (<span class="number">1</span>, <span class="number">2</span>,)</span><br><span class="line">s.update(tup_1)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="string">'a'</span>, <span class="string">'f'</span>, <span class="string">'cc'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">list_1 = [<span class="string">'w'</span>, <span class="string">'a'</span>, <span class="number">1</span>]</span><br><span class="line">s.update(list_1)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="number">1</span>, <span class="string">'f'</span>, <span class="string">'w'</span>, <span class="string">'a'</span>, <span class="string">'cc'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-remove-x"><a href="#set-remove-x" class="headerlink" title="set.remove(x)"></a>set.remove(x)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 移除集合中元素，如果移除的元素不在集合中将发生错误</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s.remove(<span class="string">'cc'</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'f'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s.remove(<span class="string">'mm'</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"C:/Users/123/PycharmProjects/py2018/test"</span>, line <span class="number">104</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s.remove(<span class="string">'mm'</span>)</span><br><span class="line">KeyError: <span class="string">'mm'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="set-discard-x"><a href="#set-discard-x" class="headerlink" title="set.discard(x)"></a>set.discard(x)</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 移除集合中元素，如果移除的元素不在集合中不会发生错误</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s.discard(<span class="string">'mm'</span>)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">'cc'</span>, <span class="string">'a'</span>, <span class="string">'f'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-pop"><a href="#set-pop" class="headerlink" title="set.pop()"></a>set.pop()</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机删除集合中元素</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s.pop()</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">'a'</span>, <span class="string">'cc'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-clear"><a href="#set-clear" class="headerlink" title="set.clear()"></a>set.clear()</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清空集合</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s.clear()</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="计算set元素个数"><a href="#计算set元素个数" class="headerlink" title="计算set元素个数"></a>计算set元素个数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">print(<span class="string">'集合元素个数为：'</span>+str(len(s)))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">集合长度为：<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="set-copy"><a href="#set-copy" class="headerlink" title="set.copy"></a>set.copy</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s1 = s.copy()</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&apos;a&apos;, &apos;f&apos;, &apos;cc&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="差集（-）（difference）"><a href="#差集（-）（difference）" class="headerlink" title="差集（-）（difference）"></a>差集（-）（difference）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># difference求差集 或者用 -</span></span><br><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s1 = &#123;<span class="string">'a'</span>, <span class="string">'f'</span>, <span class="number">1</span>, <span class="string">'ww'</span>&#125;</span><br><span class="line"><span class="comment"># 两种求差集的方法</span></span><br><span class="line">print(<span class="string">"在s中不在s1中: "</span>+str(s.difference(s1)))</span><br><span class="line">print(<span class="string">'在s1中不在s中： '</span>+str(s1-s))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在s中不在s1中: &#123;&apos;cc&apos;&#125;</span><br><span class="line">在s1中不在s中： &#123;&apos;ww&apos;, 1&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="交集（-amp-）（intersection）"><a href="#交集（-amp-）（intersection）" class="headerlink" title="交集（&amp;）（intersection）"></a>交集（&amp;）（intersection）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s1 = &#123;<span class="string">'a'</span>, <span class="string">'f'</span>, <span class="number">1</span>, <span class="string">'ww'</span>&#125;</span><br><span class="line"><span class="comment"># 同时在集合s 和 s1 中的元素</span></span><br><span class="line">print(s.intersection(s1))</span><br><span class="line">print(s1&amp;s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&apos;a&apos;, &apos;f&apos;&#125;</span><br><span class="line">&#123;&apos;a&apos;, &apos;f&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="并集（-）-（union）"><a href="#并集（-）-（union）" class="headerlink" title="并集（|） （union）"></a>并集（|） （union）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s1 = &#123;<span class="string">'a'</span>, <span class="string">'f'</span>, <span class="number">1</span>, <span class="string">'ww'</span>&#125;</span><br><span class="line"><span class="comment"># 元素在集合 s 中或在集合 s1 中</span></span><br><span class="line">print(s.union(s1))</span><br><span class="line">print(s1|s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&apos;a&apos;, 1, &apos;f&apos;, &apos;cc&apos;, &apos;ww&apos;&#125;</span><br><span class="line">&#123;&apos;a&apos;, 1, &apos;f&apos;, &apos;cc&apos;, &apos;ww&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="对称差集（-）-（sysmmetric-difference）"><a href="#对称差集（-）-（sysmmetric-difference）" class="headerlink" title="对称差集（^） （sysmmetric_difference）"></a>对称差集（^） （sysmmetric_difference）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = set((<span class="string">'a'</span>, <span class="string">'cc'</span>, <span class="string">'f'</span>))</span><br><span class="line">s1 = &#123;<span class="string">'a'</span>, <span class="string">'f'</span>, <span class="number">1</span>, <span class="string">'ww'</span>&#125;</span><br><span class="line"><span class="comment"># 除集合s和集合s1共有的以外的元素</span></span><br><span class="line">print(s.symmetric_difference(s1))</span><br><span class="line">print(s1^s)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;1, &apos;ww&apos;, &apos;cc&apos;&#125;</span><br><span class="line">&#123;1, &apos;ww&apos;, &apos;cc&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-isuperset-x-判断一个集合是否是另一个集合的父集"><a href="#set-isuperset-x-判断一个集合是否是另一个集合的父集" class="headerlink" title="set.isuperset(x) 判断一个集合是否是另一个集合的父集"></a>set.isuperset(x) 判断一个集合是否是另一个集合的父集</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s1 = &#123;<span class="string">'ljl'</span>,<span class="string">'wc'</span>,<span class="string">'xy'</span>,<span class="string">'zb'</span>,<span class="string">'lsy'</span>&#125;</span><br><span class="line">s2 = &#123;<span class="string">'mmf'</span>,<span class="string">'lsy'</span>,<span class="string">'syj'</span>&#125;</span><br><span class="line">s3 = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line">print(s1.isdisjoint(s2))</span><br><span class="line">print(s1.isdisjoint(s3))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<h3 id="symmetric-difference-update-对称更新差集"><a href="#symmetric-difference-update-对称更新差集" class="headerlink" title="symmetric_difference_update() 对称更新差集"></a>symmetric_difference_update() 对称更新差集</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将s2更新到s1中的同时去除s2 和s1中相同的元素</span></span><br><span class="line">s1 = &#123;<span class="string">'ljl'</span>,<span class="string">'wc'</span>,<span class="string">'xy'</span>,<span class="string">'zb'</span>,<span class="string">'lsy'</span>&#125;</span><br><span class="line">s2 = &#123;<span class="string">'mmf'</span>,<span class="string">'lsy'</span>,<span class="string">'syj'</span>&#125;</span><br><span class="line">s1.symmetric_difference_update(s2)</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&apos;syj&apos;, &apos;xy&apos;, &apos;wc&apos;, &apos;ljl&apos;, &apos;zb&apos;, &apos;mmf&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="isdisjoint-检测2个集合是否不存在交集-存在交集-False"><a href="#isdisjoint-检测2个集合是否不存在交集-存在交集-False" class="headerlink" title="isdisjoint() 检测2个集合是否不存在交集 存在交集 False"></a>isdisjoint() 检测2个集合是否不存在交集 存在交集 False</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s1 = &#123;<span class="string">'ljl'</span>,<span class="string">'wc'</span>,<span class="string">'xy'</span>,<span class="string">'zb'</span>,<span class="string">'lsy'</span>&#125;</span><br><span class="line">s2 = &#123;<span class="string">'mmf'</span>,<span class="string">'lsy'</span>,<span class="string">'syj'</span>&#125;</span><br><span class="line">s3 = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line">print(s1.isdisjoint(s2))</span><br><span class="line">print(s1.isdisjoint(s3))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<h3 id="intersection-update-交集更新操作"><a href="#intersection-update-交集更新操作" class="headerlink" title="intersection_update 交集更新操作"></a>intersection_update 交集更新操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s1 = &#123;<span class="string">'ljl'</span>,<span class="string">'wc'</span>,<span class="string">'xy'</span>,<span class="string">'zb'</span>,<span class="string">'lsy'</span>&#125;</span><br><span class="line">s2 = &#123;<span class="string">'mmf'</span>,<span class="string">'lsy'</span>,<span class="string">'syj'</span>&#125;</span><br><span class="line">s1.intersection_update(s2)</span><br><span class="line">s2.intersection_update(s1)</span><br><span class="line">print(s1)</span><br><span class="line">print(s2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&apos;lsy&apos;&#125;</span><br><span class="line">&#123;&apos;lsy&apos;&#125;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/11/08/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
